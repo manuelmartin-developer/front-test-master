@@ -1,9 +1,16 @@
+# Intrucciones para puesta en marcha del proyecto
+
+1. Añadir una variable de entorno ".env.local" para llamadas a la API mocks --> REACT_APP_API_BASE_URL=http://localhost:3100
+2. Instalación de paquetes --> yarn install
+3. Correr proyecto --> yarn load
+
 # Requerimientos
 
 Necesitamos desarrollar una Single Page Application (SPA) que muestre la información de nuestras imagenes:
-  1. Mostrar todas las imagenes con un scroll infinito.
-  2. Filtrar el contenido a través de una búsqueda (No es necesario que el resultado sea coherente).
-  3. Realizar un like/unlike de cada uno de los items. UI responsive.
+
+1. Mostrar todas las imagenes con un scroll infinito.
+2. Filtrar el contenido a través de una búsqueda (No es necesario que el resultado sea coherente).
+3. Realizar un like/unlike de cada uno de los items. UI responsive.
 
 # Información
 
@@ -17,6 +24,7 @@ Para arrancar la api mock simplemente ejecutar:
 ## Endpoints
 
 ### `GET http://localhost:3100/images`
+
 ```json
 [
   {
@@ -50,7 +58,6 @@ Para arrancar la api mock simplemente ejecutar:
 
 Se puede utilizar los query params `search` y `page` para simular la busqueda y paginación.
 
-
 ### `POST http://localhost:3100/images/:id/likes`
 
 Espera un body vacio y respondera con un 204 si todo ha ido correctamente, simula la acción de like.
@@ -58,6 +65,7 @@ Espera un body vacio y respondera con un 204 si todo ha ido correctamente, simul
 # Diseño
 
 La visualización de la aplicación cambia dependiendo del dispositivo que se este utilizando.
+
 - En el caso de que se utilice un dispositivo móvil, se debe de mostrar la aplicación siguiendo el diseño mobile.psd.
 - En el caso que se utilice una pantalla mayor, se debe de utilizar el diseño web.psd, con un mínimo de 2 columnas y un máximo de 4.
 
@@ -71,6 +79,7 @@ Si no dispones de photoshop puedes usar [photopea](https://www.photopea.com/).
 - HTML y estilos responsive a partir de los PSDs: mobile para móviles y web para Desktop.
 
 Se valorarán los siguientes puntos:
+
 - Tests de la aplicación.
 - Usar “BEM methodology”.
 - El uso de algún “package manager”.
