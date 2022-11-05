@@ -1,0 +1,26 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.vscode
+.idea
+.DS_Store
+
+yarn-debug.log*
+yarn-error.log*
+
+# Optional eslint cache
+.eslintcache
+
+resources/ios/**/*
+resources/android/**/*
