@@ -1,0 +1,255 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/breakpoints.scss";
+
+.gallery_item__container {
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  max-height: 560px;
+  margin: 0 auto;
+  @include display-flex-column-center;
+  position: relative;
+  background: #fff;
+  opacity: 1;
+  animation: fadeIn 0.3s ease-in-out;
+  @media (min-width: $large) {
+    &:hover {
+      & > .gallery_item__social_container {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      & > .gallery_item__image {
+        clip-path: polygon(38% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
+      }
+      & > .gallery_item__image_overlay {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+      }
+    }
+  }
+  & > .gallery_item__image {
+    width: 100%;
+    height: 100%;
+    max-height: 420px;
+    z-index: 1;
+    object-fit: cover;
+    transition: all 0.3s ease-in-out;
+    clip-path: polygon(38% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
+    @media (min-width: $large) {
+      clip-path: polygon(0% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
+    }
+  }
+  & > .gallery_item__image_overlay {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(1, 2, 2, 0.6) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+  & > .gallery_item__price {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #333333;
+    padding: 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    z-index: 0;
+    & > span {
+      font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.25rem);
+      line-height: 15px;
+      text-transform: uppercase;
+      color: #000000;
+      font-weight: 500;
+      &:nth-last-of-type() {
+        display: none;
+      }
+      &:nth-child(2) {
+        font-size: 12px;
+      }
+    }
+    @media screen and (min-width: $small) {
+      padding: 20px;
+    }
+  }
+
+  & > .gallery_item_info {
+    @include display-flex-column-center;
+    height: 100px;
+    width: 100%;
+    padding: 10px 20px;
+    background: #fff;
+    & > .gallery_item_info__title {
+      width: 100%;
+      margin-bottom: 7px;
+      font-size: clamp(1rem, 0.9395rem + 0.4839vw, 1.375rem);
+      line-height: 100%;
+      text-transform: uppercase;
+      color: #000000;
+      font-weight: 400;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    & > .gallery_item_info__author {
+      @include display-flex-center;
+      & > span {
+        font-family: "Droid Serif";
+        font-size: clamp(0.75rem, 0.6794rem + 0.5645vw, 1.1875rem);
+        line-height: 100%;
+        font-weight: 400;
+        text-align: center;
+        &:nth-child(1) {
+          color: #c2c2bd;
+          filter: drop-shadow(0.5px 0.866px 0px #ffffff);
+          margin-right: 6px;
+        }
+        &:nth-child(2) {
+          color: #000000;
+        }
+      }
+    }
+  }
+
+  & > .gallery_item__social_container {
+    @include display-flex-center;
+    width: 100%;
+    height: 60px;
+    background: #fff;
+    transition: all 0.3s ease-in-out;
+    & > .gallery_item__social_container_counter,
+    & > .gallery_item__social_container_reload {
+      @include display-flex-center;
+      gap: 30px;
+      width: 50%;
+      height: 100%;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      border: 1px solid #e2e2e2;
+      & > span {
+        font-size: 23px;
+        line-height: 10px;
+        text-transform: uppercase;
+        color: #b6b6b4;
+        text-align: center;
+      }
+    }
+    & > .gallery_item__social_container_counter {
+      & > .gallery_item__social_container_counter__image {
+        @include display-flex-center;
+        width: 35px;
+        min-width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #b6b6b4;
+        transition: background 0.3s ease-in-out;
+        &.isLiked {
+          background: #83f3c6;
+          animation: onLike 0.3s ease-in-out;
+          & > svg {
+            filter: drop-shadow(0.5px 0.866px 0px #b6b6b4);
+          }
+        }
+      }
+    }
+    & > .gallery_item__social_container_reload {
+      border-left: none;
+      & > .gallery_item__social_container_reload__image {
+        @include display-flex-center;
+        width: 35px;
+        min-width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #b6b6b4;
+      }
+    }
+    @media (min-width: $large) {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      width: fit-content;
+      height: fit-content;
+      padding: 15px;
+      gap: 15px;
+      background: transparent;
+      @include display-flex-column-center;
+      & > .gallery_item__social_container_counter,
+      & > .gallery_item__social_container_reload {
+        @include display-flex-column-reverse;
+        align-items: flex-end;
+        width: 100%;
+        border: none;
+        gap: 15px;
+        & > span {
+          color: #fff;
+        }
+      }
+      & > .gallery_item__social_container_counter {
+        & > .gallery_item__social_container_counter__image {
+          background: #fff;
+          & > svg {
+            fill: #b6b6b4;
+          }
+          &.isLiked {
+            & > svg {
+              fill: #fff;
+            }
+          }
+        }
+      }
+      & > .gallery_item__social_container_reload {
+        & > .gallery_item__social_container_reload__image {
+          background: #fff;
+          & > svg {
+            fill: #b6b6b4;
+          }
+        }
+      }
+    }
+  }
+  @media (min-width: $medium) {
+    max-width: 460px;
+  }
+  @media (min-width: $large) {
+    height: 490px;
+    max-height: 490px;
+  }
+}
+
+// Animations
+
+@keyframes onLike {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,17 @@
+@import "../../styles/breakpoints.scss";
+
+.gallery_list_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 1600px;
+  margin: 40px auto;
+  padding: 0 30px;
+  overflow: hidden;
+  @media (min-width: $medium) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+  }
+}
