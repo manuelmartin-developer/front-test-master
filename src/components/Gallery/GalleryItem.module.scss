@@ -22,6 +22,7 @@
         clip-path: polygon(38% 0, 100% 0, 100% 100%, 0 100%, 0 21%);
       }
       & > .gallery_item__image_overlay {
+        display: block;
         width: 100%;
         height: 100%;
         opacity: 1;
