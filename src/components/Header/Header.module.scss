@@ -1,0 +1,7 @@
+@import "../../styles/mixins.scss";
+
+.header {
+  width: 100%;
+  background: #fff;
+  @include display-flex-center;
+}
