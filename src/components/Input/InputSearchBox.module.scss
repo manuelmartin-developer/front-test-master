@@ -1,0 +1,33 @@
+@import "../../styles/mixins.scss";
+@import "../../styles/breakpoints.scss";
+
+.search_box {
+  @include display-flex-center;
+  position: relative;
+  @media (max-width: 360px) {
+    width: 100%;
+  }
+  & > .search_box__icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  & > .search_box__input {
+    width: 220px;
+    height: 30px;
+    padding: 0 10px 0 30px;
+    background: #f6f6f6;
+    border-radius: 16px;
+    border: none;
+    outline: none;
+    font-size: clamp(0.6875rem, 0.1319rem + 2.7778vw, 1rem);
+    transition: width 0.3s ease-in-out;
+    @media (max-width: 360px) {
+      width: 100%;
+    }
+    @media (min-width: $small) {
+      width: 270px;
+    }
+  }
+}
