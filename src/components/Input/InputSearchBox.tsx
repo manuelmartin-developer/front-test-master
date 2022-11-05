@@ -41,10 +41,11 @@ const InputSearchBox: React.FC = () => {
   }, [debouncedSearchTerm]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className={styles.search_box}>
+    <div className={styles.search_box} role="textbox">
       <FiSearch className={styles.search_box__icon} />
       <input
         className={styles.search_box__input}
+        data-testid="input-search-box"
         type="text"
         placeholder="You're looking for something?"
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {

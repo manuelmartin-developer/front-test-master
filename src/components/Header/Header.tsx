@@ -22,6 +22,7 @@ const Header: React.FC = () => {
       className={styles.header}
       onMouseEnter={onEnterApp}
       onMouseLeave={onExitApp}
+      data-testid="header"
     >
       <Nav />
     </header>

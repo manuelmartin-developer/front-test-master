@@ -4,7 +4,7 @@ import Home from "../../pages/Home/Home";
 
 const Main: React.FC = () => {
   return (
-    <main className="main">
+    <main className="main" data-testid="main">
       <Routes>
         <Route path="/" element={<Home />} />
       </Routes>

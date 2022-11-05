@@ -62,7 +62,11 @@ const GalleryItem: React.FC<{ image: IObjectImage }> = ({ image }) => {
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <article className={styles.gallery_item__container} ref={galleryItemRef}>
+    <article
+      className={styles.gallery_item__container}
+      ref={galleryItemRef}
+      data-testid="gallery-item"
+    >
       <Gallery
         options={{
           errorMsg: "Ha ocurrido un error al cargar la imágen",

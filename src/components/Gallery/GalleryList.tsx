@@ -15,7 +15,11 @@ const GalleryList: React.FC<{ imagesData: IObjectImage[] }> = ({
   });
 
   return (
-    <section className={styles.gallery_list_container} ref={galleryListRef}>
+    <section
+      className={styles.gallery_list_container}
+      ref={galleryListRef}
+      data-testid="gallery-list"
+    >
       {imagesData.map((image: IObjectImage) => {
         return <GalleryItem key={image.id} image={image} />;
       })}
