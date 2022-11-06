@@ -12,6 +12,7 @@ const Home = () => {
   // Component states
   const [imagesData, setImagesData] = useState<IObjectImage[] | undefined>();
   const [slice, setSlice] = useState<number>(10);
+  const [page, setPage] = useState<number>(1);
   const [hasMoreImages, setHasMoreImages] = useState<boolean>(false);
   const [isLoadingImages, setIsLoadingImages] = useState<boolean>(false);
   const [isLoaderActive, setIsLoaderActive] = useState<boolean>(false);
@@ -25,7 +26,7 @@ const Home = () => {
     setIsLoadingImages(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/images`
+        `${process.env.REACT_APP_API_BASE_URL}/images?page=${page}`
       );
       if (response.status === 200) {
         // Takes only first 10 images for the first render
@@ -34,6 +35,8 @@ const Home = () => {
         response.data.length > slice
           ? setHasMoreImages(true)
           : setHasMoreImages(false);
+        response.data.length > slice && setPage((prevPage) => prevPage + 1);
+
         setIsLoadingImages(false);
       }
     } catch (err) {
@@ -47,7 +50,7 @@ const Home = () => {
     setIsLoaderActive(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_BASE_URL}/images`
+        `${process.env.REACT_APP_API_BASE_URL}/images?page=${page}`
       );
       if (response.status === 200) {
         // Pretend a delay of 1 second
@@ -61,7 +64,9 @@ const Home = () => {
           response.data.length > slice + slice
             ? setHasMoreImages(true)
             : setHasMoreImages(false);
+          // Increments page number and slice
           setSlice((prevSlice) => prevSlice + slice);
+          setPage((prevPage) => prevPage + 1);
 
           setIsLoadingImages(false);
           setIsLoaderActive(false);
