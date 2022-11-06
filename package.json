@@ -8,6 +8,7 @@
     "load": "yarn start & yarn mocks",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "cypress": "cypress open",
     "mocks": "mocks-server"
   },
   "author": "",
