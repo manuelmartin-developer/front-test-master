@@ -11,7 +11,6 @@ module.exports = [
       {
         id: "enabled",
         response: (req, res, next, mocksServer) => {
-          res.header("Access-Control-Allow-Origin", "*");
           res.set("x-mocks-server-example", "some-value");
           mocksServer.tracer.info(
             "Custom header added by add-headers:enabled route variant middleware"
