@@ -25,8 +25,9 @@ const GalleryItem: React.FC<{ image: IObjectImage }> = ({ image }) => {
 
   // Methods
   const onHandleLikeAction = async () => {
+    const URL = `${process.env.REACT_APP_API_BASE_URL}/images/${image.id}/likes/`;
     try {
-      const response = await axios.post(image.links[1].uri, {});
+      const response = await axios.post(URL, {});
       if (response.status === 204) {
         isLiked
           ? setLikesCounter(likesCounter - 1)
