@@ -3,7 +3,7 @@
 1. Añadir una variable de entorno ".env.local" para llamadas a la API mocks --> REACT_APP_API_BASE_URL=http://localhost:3100
 2. Instalación de paquetes --> yarn install
 3. Correr test unitarios y de integración --> yarn test
-4. Correr test E2E --> npx cypress open
+4. Correr test E2E --> yarn cypress
 5. Correr proyecto --> yarn load
 
 # Requerimientos
