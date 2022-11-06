@@ -24,6 +24,7 @@ const Home = () => {
   // Methods
   const onGetInitialImages = async () => {
     setIsLoadingImages(true);
+    setPage(1);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_BASE_URL}/images?page=${page}`
@@ -80,6 +81,7 @@ const Home = () => {
   const onGetImagesBySearch = async () => {
     if (!userSearch) return;
     setIsLoadingImages(true);
+    setPage(1);
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_BASE_URL}/images?search=${userSearch}`
@@ -126,7 +128,7 @@ const Home = () => {
       const scrollHeight = document.documentElement.scrollHeight;
       const scrollTop = document.documentElement.scrollTop;
       const clientHeight = document.documentElement.clientHeight;
-      const isBottom = scrollTop + clientHeight >= scrollHeight - 1;
+      const isBottom = scrollTop + clientHeight >= scrollHeight - 100;
       if (isBottom && hasMoreImages && !isLoadingImages) {
         onGetMoreImages();
       }
